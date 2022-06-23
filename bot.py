@@ -47,7 +47,7 @@ async def help(event):
                    )
 
 #التاك
-@xavierbot.on(events.NewMessage(pattern="^/all?(.*)|/all|#tag?(.*)|#tag|/all?(.*)|/all"))
+@xavierbot.on(events.NewMessage(pattern="^/all?(.*)|/all|#tag?(.*)|#tag| all?(.*)| all"))
 async def mentionall(event):
   global moment_worker
   if event.is_private:
