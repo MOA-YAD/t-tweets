@@ -47,7 +47,7 @@ async def help(event):
                    )
 
 #التاك
-@xavierbot.on(events.NewMessage(pattern="^/all?(.*)|@all|#tag?(.*)|#tag|/all?(.*)|#all"))
+@xavierbot.on(events.NewMessage(pattern="^/all?(.*)|/all|#tag?(.*)|#tag| @all?(.*)| @all"))
 async def mentionall(event):
   global moment_worker
   if event.is_private:
@@ -57,7 +57,7 @@ async def mentionall(event):
   async for admin in xavierbot.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("**يمكن للادمن فقط استخدام بوت التاك 🤓💕**")
+    return await event.a@respond("**يمكن للادمن فقط استخدام بوت التاك 🤓💕**")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
