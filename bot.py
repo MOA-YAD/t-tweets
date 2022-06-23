@@ -107,7 +107,7 @@ async def cancel_mentionall(event):
       moment_worker.remove(event.chat_id)
     except:
       pass
-    return await event.respond('**__تم ايقاف التاك 🤓💕__**\n\n**__Powered By:__ @K_P_S_6**')
+    return await event.respond('**__تم ايقاف التاك 🤓💕__**\n\n**..**')
 
 
 
