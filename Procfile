@@ -1,2 +1,2 @@
-xavier: python3 moa_yad
+xavier: python3 bot.py
 
