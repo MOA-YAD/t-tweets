@@ -22,42 +22,48 @@ moment_worker = []
 
 
 #start
-@xavierbot.on(events.NewMessage(pattern="^تاك$"))
+@xavierbot.on(events.NewMessage(pattern="تاك"))
 async def start(event):
-  await event.reply("مـرحبآ بكـ في بوت التاك 😊❤️.!\n استطيع عمل تالك ل 1500 عضو في المجموعات ... وعمل 300 في القنوات .\n علمود اتشوف الاوامر ارسل ` اوامر التاك `",
+  await event.reply("اي شرايد مني\n علمود اتشوف الاوامر دز ` اوامر التاك `",
                     buttons=(
                       [
                         Button.url('مطور البوت', 'https://t.me/MOA_YAD'),   
+                      ]
+                      [
+                        Button.url('تواصل المطور', 'https://t.me/M376BOT'),   
                       ]
                    ), 
                     link_preview=False
                    )
 
 #help
-@xavierbot.on(events.NewMessage(pattern="^اوامر التاك$"))
+@xavierbot.on(events.NewMessage(pattern="اوامر التاك"))
 async def help(event):
-  helptext = "**قائمه مساعده بوت التاك**\n\nالأمر: /all \n يمكنك استخدام هذا الأمر مع النص الذي تريد إخبار الآخرين به. \n مثال: `/all هيي ` \n يمكنك استخدام هذا الأمر كإجابة. أي رسالة سيقوم البوت بوضع علامة على المستخدمين للرسالة التي تم الرد عليه"
+  helptext = "**قائمه مساعده بوت التاك**\n\nالأمر: @all /n علمود توكفني دز `ايقاف`\n مثال: `@all هيي ` \n "
   await event.reply(helptext,
                     buttons=(
                       [
                         Button.url('مطور البوت', 'https://t.me/MOA_YAD'),   
+                      ]             
+                      [
+                        Button.url('تواصل المطور', 'https://t.me/M376BOT'),   
                       ]
                    ), 
                     link_preview=False
                    )
 
 #التاك
-@xavierbot.on(events.NewMessage(pattern="^/all?(.*)|/all|#tag?(.*)|#tag| all?(.*)| all"))
+@xavierbot.on(events.NewMessage(pattern="@all"))
 async def mentionall(event):
   global moment_worker
   if event.is_private:
-    return await event.respond("**استخدم الامر في مجموعه او قناه 💕🍂**")
+    return await event.respond("**بربك هاذه كروب**")
   
   admins = []
   async for admin in xavierbot.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.a@respond("**يمكن للادمن فقط استخدام بوت التاك 🤓💕**")
+    return await event.a@respond("**انته مشرف شي ؟**/n يلة جر منا")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
@@ -68,9 +74,9 @@ async def mentionall(event):
     if msg == None:
         return await event.respond("لا يمكنني ذكر الأعضاء في المنشور القديم !!")
   elif event.pattern_match.group(1) and event.reply_to_msg_id:
-    return await event.respond("أعطني شيئاً. مثال: `/all هيي`")
+    return await event.respond("مثال : `@all هيي`")
   else:
-    return await event.respond("قم بالرد علي رساله او اعطني بعض الكلمات لتاك 🤓💕")
+    return await event.respond("ها اطيني شي اسوي بي تاك")
     
   if mode == "text_on_cmd":
     moment_worker.append(event.chat_id)
@@ -80,7 +86,7 @@ async def mentionall(event):
       usrnum += 1
       usrtxt += f"[{usr.first_name}](tg://user?id={usr.id}) "
       if event.chat_id not in moment_worker:
-        await event.respond("تم التوقف!")
+        await event.respond("تم الايقاف 😉")
         return
       if usrnum == 5:
         await xavierbot.send_message(event.chat_id, f"{usrtxt}\n\n{msg}")
@@ -98,7 +104,7 @@ async def mentionall(event):
       usrnum += 1
       usrtxt += f"[{usr.first_name}](tg://user?id={usr.id}) "
       if event.chat_id not in moment_worker:
-        await event.respond("**تم التوقف**")
+        await event.respond("**تم الايقاف 😉**")
         return
       if usrnum == 5:
         await xavierbot.send_message(event.chat_id, usrtxt, reply_to=msg)
@@ -109,16 +115,16 @@ async def mentionall(event):
 
 #الغاء التاك
 
-@xavierbot.on(events.NewMessage(pattern="^/cancel$|الغاء|/cancel|ايقاف"))
+@xavierbot.on(events.NewMessage(pattern="ايقاف"))
 async def cancel_mentionall(event):
   if not event.chat_id in moment_worker:
-    return await event.respond('**__لا يوجد عمليه تاك الان 🤓💕.__**')
+    return await event.respond('**ها شنو منو تحجي وياي**')
   else:
     try:
       moment_worker.remove(event.chat_id)
     except:
       pass
-    return await event.respond('**__تم ايقاف التاك 🤓💕__**\n\n**__.__**')
+    return await event.respond('**جاري الايقاف**')
 
 
 
