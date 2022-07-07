@@ -22,7 +22,7 @@ moment_worker = []
 
 
 #start
-@xavierbot.on(events.NewMessage(pattern="تاك"))
+@xavierbot.on(events.NewMessage(pattern="^تاك$"))
 async def start(event):
   await event.reply("اي شرايد مني\n علمود اتشوف الاوامر دز ` اوامر التاك `",
                     buttons=(
@@ -37,7 +37,7 @@ async def start(event):
                    )
 
 #help
-@xavierbot.on(events.NewMessage(pattern="اوامر التاك"))
+@xavierbot.on(events.NewMessage(pattern="^اوامر التاك$"))
 async def help(event):
   helptext = "**قائمه مساعده بوت التاك**\n\nالأمر: @all /n علمود توكفني دز `ايقاف`\n مثال: `@all هيي ` \n "
   await event.reply(helptext,
@@ -53,7 +53,7 @@ async def help(event):
                    )
 
 #التاك
-@xavierbot.on(events.NewMessage(pattern="@all"))
+@xavierbot.on(events.NewMessage(pattern="^@all$"))
 async def mentionall(event):
   global moment_worker
   if event.is_private:
@@ -115,7 +115,7 @@ async def mentionall(event):
 
 #الغاء التاك
 
-@xavierbot.on(events.NewMessage(pattern="ايقاف"))
+@xavierbot.on(events.NewMessage(pattern="^ايقاف$"))
 async def cancel_mentionall(event):
   if not event.chat_id in moment_worker:
     return await event.respond('**ها شنو منو تحجي وياي**')
