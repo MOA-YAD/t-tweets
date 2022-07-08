@@ -28,7 +28,7 @@ async def start(event):
                     buttons=(
                       [
                         Button.url('مطور البوت', 'https://t.me/MOA_YAD'),   
-                      ]
+                      ], 
                       [
                         Button.url('تواصل المطور', 'https://t.me/M376BOT'),   
                       ]
@@ -44,7 +44,7 @@ async def help(event):
                     buttons=(
                       [
                         Button.url('مطور البوت', 'https://t.me/MOA_YAD'),   
-                      ]             
+                      ],              
                       [
                         Button.url('تواصل المطور', 'https://t.me/M376BOT'),   
                       ]
