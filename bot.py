@@ -61,7 +61,7 @@ async def mentionall(event):
   
   admins = []
   async for admin in xavierbot.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
-    admins.append(admin.id)
+    admins.append(usr.id)
   if not event.sender_id in admins:
     return await event.a@respond("**انته مشرف شي ؟**/n يلة جر منا")
   
@@ -89,8 +89,8 @@ async def mentionall(event):
         await event.respond("تم الايقاف 😉")
         return
       if usrnum == 5:
-        await xavierbot.send_message(event.chat_id, f"{usrtxt}\n\n{msg}")
-        await asyncio.sleep(2)
+        await xavierbot.send_message(event.chat_id, f"{usrtxt}\n♥️♥️♥️♥️♥️♥️♥️♥️♥️♥️♥️\n{msg}")
+        await asyncio.sleep(0)
         usrnum = 0
         usrtxt = ""
         
@@ -108,9 +108,9 @@ async def mentionall(event):
         return
       if usrnum == 5:
         await xavierbot.send_message(event.chat_id, usrtxt, reply_to=msg)
-        await asyncio.sleep(2)
+        await asyncio.sleep(0)
         usrnum = 0
-        usrtxt = ""
+        usrtxt = "♥️"
 
 
 #الغاء التاك
